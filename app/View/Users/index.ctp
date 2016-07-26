@@ -1,16 +1,49 @@
 <div class="users form">
-<h1>Users</h1>
+<?php if($_COOKIE["language"] == 'vi'){ ?>
+<h1>Danh sách tài khoản</h1>
+<?php }elseif($_COOKIE["language"] == 'en'){?>
+<h1>List User</h1>
+<?php }else{ ?>
+<h1>アカウントリスト</h1>
+<?php } ?>
+
 <table>
     <thead>
 		<tr>
+		<?php if($_COOKIE["language"] == 'vi'){ ?>
+
+			<th><?php echo $this->Form->checkbox('all', array('name' => 'CheckAll',  'id' => 'CheckAll')); ?></th>
+			<th><?php echo $this->Paginator->sort('username', 'Tài khoản');?>  </th>
+			<th><?php echo $this->Paginator->sort('email', 'Email');?></th>
+			<th><?php echo $this->Paginator->sort('created', 'Ngày tạo');?></th>
+			<th><?php echo $this->Paginator->sort('modified','Sửa lần cuối');?></th>
+			<th><?php echo $this->Paginator->sort('role','Vai trò');?></th>
+			<th><?php echo $this->Paginator->sort('status','Trạng thái');?></th>
+			<th>Thao tác</th>
+
+			<?php }elseif($_COOKIE["language"] == 'en'){?>
+
 			<th><?php echo $this->Form->checkbox('all', array('name' => 'CheckAll',  'id' => 'CheckAll')); ?></th>
 			<th><?php echo $this->Paginator->sort('username', 'Username');?>  </th>
-			<th><?php echo $this->Paginator->sort('email', 'E-Mail');?></th>
+			<th><?php echo $this->Paginator->sort('email', 'Email');?></th>
 			<th><?php echo $this->Paginator->sort('created', 'Created');?></th>
-			<th><?php echo $this->Paginator->sort('modified','Last Update');?></th>
+			<th><?php echo $this->Paginator->sort('modified','Modified');?></th>
 			<th><?php echo $this->Paginator->sort('role','Role');?></th>
 			<th><?php echo $this->Paginator->sort('status','Status');?></th>
-			<th>Actions</th>
+			<th>Action</th>
+
+			<?php }else{ ?>
+
+			<th><?php echo $this->Form->checkbox('all', array('name' => 'CheckAll',  'id' => 'CheckAll')); ?></th>
+			<th><?php echo $this->Paginator->sort('username', 'ユーザー名');?>  </th>
+			<th><?php echo $this->Paginator->sort('email', 'Eメール');?></th>
+			<th><?php echo $this->Paginator->sort('created', '作成した');?></th>
+			<th><?php echo $this->Paginator->sort('modified','修正されました');?></th>
+			<th><?php echo $this->Paginator->sort('role','役割');?></th>
+			<th><?php echo $this->Paginator->sort('status','状態');?></th>
+			<th>アクション</th>
+
+			<?php } ?>
 		</tr>
 	</thead>
 	<tbody>						
@@ -50,4 +83,6 @@
 echo $this->Html->link( "Thoát",   array('action'=>'logout') ); 
 ?>
 <br/>
-<a href="languages/add">Thêm ngôn ngữ</a>
+<?php echo $this->Html->link("danh sách bài báo", array('controller'=>'Articles','action'=>'index')) ?>
+<br/>
+<?php echo $this->Html->link('cài đặt ngôn ngữ', array('controller'=>'Languages', 'action'=>'setting')) ?>

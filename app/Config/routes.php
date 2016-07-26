@@ -35,9 +35,9 @@
 
 	Router::connect('/logout', array('controller'=>'Users', 'action'=>'logout'));
 
-	Router::connect('/laguage', array('controller' => 'Languages', 'action'=>'add'));
+	Router::connect('/laguage', array('controller' => 'Languages', 'action'=>'setting'));
 
-	Router::connect('/articles', array('controller' => 'Articles', 'action'=>'index'));
+	Router::connect('/article', array('controller' => 'Articles', 'action'=>'index'));
 
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
